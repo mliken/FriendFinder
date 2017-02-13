@@ -1,301 +1,311 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  </head>
-<body id= "surveyPageContent">
-<section class ="container survey-body">
-<container class= "text-center headings">
-<div id="friendForm" class="class container">
-  <div class="form-content">
-  <span class="close">&times; </span>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <!--Linking scripts and styles for web app.-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Carter+One" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../data/style.css">
+    <meta charset="UTF-8">
+    <title>Friend Finder Survey</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="../routing/apiRoutes.js"></script>
+</head>
+<!--Modal will be hidden until populated.-->
 
-
-
-  <div class="container">
-    <div class="jumbotron">
-      <h1 class = "text-center"> 
-      <span class="glyphicon glyphicon-fire">
-      </span>
-      Friend Finder Survey </h1>
-	<h3 class = "text-center" Survey Question!></h3>
-<!--capture name and photo of user -->
-
-  <h4> Name (Required) </h4>
-  <input type = "text" name id ="name" class = "form-control" required>
-  <h4> Link to Photo (Required)</h4>
-  <input type ="text" name id="photo" class ="form-control" required>
-  <hr>
-  <h3></h3>
-  </div>
-  </form>
-  </container>
-
-  <!--10 quesion friendship quiz-->
-  
-<dd>You try to respond to your e-mails as soon as possible and cannot stand a messy inbox</dd>
-            <div class="bg-info container button-holder text-center">
-                <div class="radio" id="question1">
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
-                        Strongly Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
-                        Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
-                        No Opinion  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
-                        Agree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
-                        Strongly Agree  
-                    </label>
+<body id="secondPageContent">
+    <section class="container survey-body">
+        <!--These headers will be identical on both pages.-->
+        <container class="text-center headings">
+            <div id="friendModal" class="modal container">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p class="text-center" id="modalName"></p>
                 </div>
             </div>
-<dd> You do not mind being at the center of attention.</dd>
-  <div class="bg-info container button-holder text-center">
-                <div class="radio" id="question1">
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
-                        Strongly Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
-                        Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
-                        No Opinion  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
-                        Agree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
-                        Strongly Agree  
-                    </label>
+            <h1>Friend Finder Survey</h1>
+            <h2>Take our survey to find your newest friend!</h2>
+        </container>
+        <!--Portion of the page which will capture name and photo of user.-->
+        <container class="container" id="profileForm">
+            <form id="myDetails">
+                <div class="form-group">
+                    <label for="newName">Full Name</label>
+                    <input type="name" class="form-control" id="newUsersName" placeholder="Name">
+                    <p class="text-danger help-block left-text has-error" id="nameValid"></p>
                 </div>
-            </div>
-<dd> You consider yourself more practical than creative.</dd>
-<div class="bg-info container button-holder text-center">
-                <div class="radio" id="question1">
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
-                        Strongly Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
-                        Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
-                        No Opinion  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
-                        Agree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
-                        Strongly Agree  
-                    </label>
+                <div class="form-group">
+                    <label for="imageFile">File Input</label>
+                    <input name="file" type="file" id="imageInputFile">
+                    <p id="imageValid" class="help-block">Upload an image of yourself for your new best friend to see.</p>
                 </div>
-            </div>
-<dd>Your mood can change very quickly.</dd>
-<div class="bg-info container button-holder text-center">
-                <div class="radio" id="question1">
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
-                        Strongly Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
-                        Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
-                        No Opinion  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
-                        Agree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
-                        Strongly Agree  
-                    </label>
+            </form>
+        </container>
+        <!--A 10-question survey to determine personality type of user.-->
+        <container class="container" id="survey">
+           
+            <!--When the button is clicked, if all forms of input have been filled, the algorithm to determine best match will launch and populate the form. -->
+            <div class="text-center">
+                <p class="text-danger help-block has-error" id="surveyValid"></p>
+                <button id="submitBtn" type="button" class="btn btn-lg btn-primary">
+                    <h4>
+                     <dd>You try to respond to your e-mails as soon as possible and cannot stand a messy inbox</dd>
+                <div class="bg-info container button-holder text-center">
+                    <div class="radio" id="question1">
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
+                            Strongly Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
+                            Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
+                            No Opinion  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
+                            Agree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
+                            Strongly Agree  
+                        </label>
+                    </div>
                 </div>
-            </div>
-<dd>Your work style is closer to random energy spikes than to a methodical and organized approach.</dd>
-<div class="bg-info container button-holder text-center">
-                <div class="radio" id="question1">
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
-                        Strongly Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
-                        Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
-                        No Opinion  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
-                        Agree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
-                        Strongly Agree  
-                    </label>
+    <dd> You do not mind being at the center of attention.</dd>
+      <div class="bg-info container button-holder text-center">
+                    <div class="radio" id="question1">
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
+                            Strongly Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
+                            Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
+                            No Opinion  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
+                            Agree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
+                            Strongly Agree  
+                        </label>
+                    </div>
                 </div>
-            </div>
-<dd>An interesting book or a video game is often better than a social event.</dd>
-<div class="bg-info container button-holder text-center">
-                <div class="radio" id="question1">
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
-                        Strongly Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
-                        Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
-                        No Opinion  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
-                        Agree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
-                        Strongly Agree  
-                    </label>
+    <dd> You consider yourself more practical than creative.</dd>
+    <div class="bg-info container button-holder text-center">
+                    <div class="radio" id="question1">
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
+                            Strongly Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
+                            Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
+                            No Opinion  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
+                            Agree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
+                            Strongly Agree  
+                        </label>
+                    </div>
                 </div>
-            </div>
-<dd>You are often envious of others.</dd>
-<div class="bg-info container button-holder text-center">
-                <div class="radio" id="question1">
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
-                        Strongly Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
-                        Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
-                        No Opinion  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
-                        Agree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
-                        Strongly Agree  
-                    </label>
+    <dd>Your mood can change very quickly.</dd>
+    <div class="bg-info container button-holder text-center">
+                    <div class="radio" id="question1">
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
+                            Strongly Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
+                            Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
+                            No Opinion  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
+                            Agree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
+                            Strongly Agree  
+                        </label>
+                    </div>
                 </div>
-            </div>
-<dd>You rarely worry about how your actions affect other people.</dd>
-<div class="bg-info container button-holder text-center">
-                <div class="radio" id="question1">
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
-                        Strongly Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
-                        Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
-                        No Opinion  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
-                        Agree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
-                        Strongly Agree  
-                    </label>
+    <dd>Your work style is closer to random energy spikes than to a methodical and organized approach.</dd>
+    <div class="bg-info container button-holder text-center">
+                    <div class="radio" id="question1">
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
+                            Strongly Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
+                            Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
+                            No Opinion  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
+                            Agree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
+                            Strongly Agree  
+                        </label>
+                    </div>
                 </div>
-            </div>
-  <dd>If someone does not respond to your e-mail quickly, you start worrying if you said something wrong.</dd>
-  <div class="bg-info container button-holder text-center">
-                <div class="radio" id="question1">
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
-                        Strongly Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
-                        Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
-                        No Opinion  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
-                        Agree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
-                        Strongly Agree  
-                    </label>
+    <dd>An interesting book or a video game is often better than a social event.</dd>
+    <div class="bg-info container button-holder text-center">
+                    <div class="radio" id="question1">
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
+                            Strongly Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
+                            Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
+                            No Opinion  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
+                            Agree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
+                            Strongly Agree  
+                        </label>
+                    </div>
                 </div>
-            </div>
-<dd>You often find yourself lost in thought when you are walking in nature.</dd>
-<div class="bg-info container button-holder text-center">
-                <div class="radio" id="question1">
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
-                        Strongly Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
-                        Disagree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
-                        No Opinion  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
-                        Agree  
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
-                        Strongly Agree  
-                    </label>
+    <dd>You are often envious of others.</dd>
+    <div class="bg-info container button-holder text-center">
+                    <div class="radio" id="question1">
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
+                            Strongly Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
+                            Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
+                            No Opinion  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
+                            Agree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
+                            Strongly Agree  
+                        </label>
+                    </div>
                 </div>
+    <dd>You rarely worry about how your actions affect other people.</dd>
+    <div class="bg-info container button-holder text-center">
+                    <div class="radio" id="question1">
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
+                            Strongly Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
+                            Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
+                            No Opinion  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
+                            Agree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
+                            Strongly Agree  
+                        </label>
+                    </div>
+                </div>
+      <dd>If someone does not respond to your e-mail quickly, you start worrying if you said something wrong.</dd>
+      <div class="bg-info container button-holder text-center">
+                    <div class="radio" id="question1">
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
+                            Strongly Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
+                            Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
+                            No Opinion  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
+                            Agree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
+                            Strongly Agree  
+                        </label>
+                    </div>
+                </div>
+    <dd>You often find yourself lost in thought when you are walking in nature.</dd>
+    <div class="bg-info container button-holder text-center">
+                    <div class="radio" id="question1">
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios1" value="0">
+                            Strongly Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios2" value="1">
+                            Disagree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios3" value="2">
+                            No Opinion  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios4" value="3">
+                            Agree  
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios1" class="optionsRadios optionsRadios5" value="Strongly 4">
+                            Strongly Agree  
+                        </label>
+                    </div>
+                </div>
+                        
+                        Find Your Friend
+                    </h4>
+                </button>
             </div>
-             </container>
+        </container>
     </section>
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-

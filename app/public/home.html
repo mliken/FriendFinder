@@ -1,49 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title> Friend Finder </title>
+  <title>Friend Finder</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="../routing/apiRoutes.js"></script>
+</head>
+<body>
 
-  <!-- Linking scripts and styles -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery.js"></script>
-  </head>
-<body> 
-<container class="text-center headings">
 <div class="container">
-    <div class="jumbotron">
-      <h1 class = "text-center"> 
-      <span class="glyphicon glyphicon-fire">
-      </span>
-            <h1>Friend Finder </h1>
-            <h2>Take the Quiz to find your newest friend!</h2>
-        </container>
-        <container class="container">
-            <form>
-                <!--This links to the survey portion.-->
-                <div class="text-center">
-                    <a href="/survey">
-                        <button id="homeBtn" type="button" class="btn btn-lg btn-primary">
-                            <h4>
-                                Go to Survey
-                            </h4>
-                        </button>
-                    </a>
-                </div>
-            </form>
-        </container>
-    </section>
-    <!--Footer holds links to the JSON object and GitHub repo.-->
-    <footer class="footer container text-left">
-        <a href="/api">
-            Full Friends List /
-        </a>
-        <a href="https://github.com/mliken/Friend-Finder">
-           GitHub Repo
-       </a>
-   </footer>
+<div class="text-center">
+  <div class="jumbotron">
+    <h1>Friend Finder</h1>
+    <h2>Find the friend with the greatest compatibility!</h2>
+    
+
+    <!-- Button to go to survey -->
+    <a href="/survey"><button class="btn btn-lg btn-primary" id="goToSurvey">Go to Survey</button></a>
+  </div>
+  <!-- Links to API and Git -->
+  <p><a href="/api/friends">API Friends List</a>   /   <a href="https://github.com/mliken/FriendFinder">GitHub Repo</a></p>
+</div>
+
 </body>
 </html>
-  
+

@@ -16,12 +16,12 @@ exports.data = [{
   answersArray: [4,4,0,0,1,0,3,4,2,4],
   photo: "http://i.lv3.hbo.com/assets/images/people/n/kumail-nanjiani-1024.jpg",
 }, {
-  name: "Gavin Belson",
+  name: "Jared Dunn",
   answersArray: [1,3,2,1,3,4,3,0,2,2],
   photo: "https://s3-us-west-2.amazonaws.com/assets.coderag.prd/wp-content/uploads/2016/03/nucleus.png"
 
 },{
-  name: "Jared Dunn",
+  name: "Gavin Belson",
   answersArray: [4,3,2,2,3,4,3,2,2,2],
   photo: "http://previously.tv/m/2014-04-13-silicon-valley.jpg",
 }];
