@@ -1,5 +1,5 @@
 //Exports the data of the full JSON object to be called by the web app.
-exports.data = [{
+database = [{
   name: "Richard Hendricks",
   answersArray: [3,3,3,4,4,2,4,2,0,2],
   photo: "http://b.looklive.com/s/Thomas-Middleditch-Richard-Hendricks-Silicon-Valley-S02E04-The-Lady_L2VJNnh5alg4QjVaY2otMG04V01iV0JTRmlZOD0vNDAxeDA6MTEyMXgxMDgwLzY0MHgwL2ZpbHRlcnM6d2F0ZXJtYXJrKDIwY2U5ODc5LTYxOTctNDI4Ni1iYmY4LTE3MTg1M2JkM2RlZSwzOTAsNzgyLDEwKS9hNjYxMWU4Yi1hMTFiLTRjNDUtOGE3NC1hYzM0MmI0ODFjMTA=",
@@ -25,3 +25,6 @@ exports.data = [{
   answersArray: [4,3,2,2,3,4,3,2,2,2],
   photo: "http://previously.tv/m/2014-04-13-silicon-valley.jpg",
 }];
+
+
+module.exports = database;
